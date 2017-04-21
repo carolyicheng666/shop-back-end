@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div align="center" id="x" style="overflow:hidden;height:212px;font-size:14px;line-height:22px;text-align:left;margin:200px 50px;">
+            <!-- SQL是用于访问和处理数据库的标准的计算机语言。在本教程中，您将学到如何使用 SQL访问和处理数据系统中的数据，这类数据库包括：MySQL、SQL Server、Access、Oracle、Sybase、DB2等等。 -->
+        <div id="g1">
+            <div class="panel panel-success">
+                <!-- <div class="panel-heading">
+                    奖励名单
+                </div> -->
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive table-bordered">
+                        <table class="table" >
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>商品名称</th>
+                                    <th>售价</th>
+                                    <th>买家</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="success">
+                                    <td>1</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr class="info">
+                                    <td>2</td>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>3</td>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                                <tr class="danger">
+                                    <td>4</td>
+                                    <td>John</td>
+                                    <td>Smith</td>
+                                    <td>@jsmith</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+
+            </div>
+        </div>
+        <div id="g"></div>
+        
+    </div>
+    <script type="text/javascript">
+    var x = document.getElementById("x");
+    var g1 = document.getElementById("g1");
+    var g = document.getElementById("g");
+    var speed = 10; //滚动速度值，值越大速度越慢
+    var n = 260 / g1.offsetHeight;
+    console.log(g1.offsetHeight);
+    for (i = 0; i < n; i++) {
+        g1.innerHTML += g1.innerHTML;
+    }
+    g.innerHTML = g1.innerHTML; //克隆g为g1
+    function Marquee() {
+        if (g.offsetTop - x.scrollTop <= 0) //当滚动至g1与g交界时
+            x.scrollTop -= g1.offsetHeight; //x跳到最顶端
+        else {
+            x.scrollTop++; //如果是横向的 将 所有的 height top 改成 width left
+        }
+    }
+    var MyMar = setInterval(Marquee, speed); //设置定时器
+    x.onmouseover = function() {
+            clearInterval(MyMar);
+        } //鼠标经过时清除定时器达到滚动停止的目的
+    x.onmouseout = function() {
+            MyMar = setInterval(Marquee, speed);
+        } //鼠标移开时重设定时器
+    </script>
+</body>
+
+</html>
